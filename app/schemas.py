@@ -8,12 +8,13 @@ class PostBase(BaseModel):
     published:bool = True
 
 class PostCreate(PostBase): #inherit postbase attributes
-    pass
+    pass #instead of asking the user for their user id when they are creating a post, what we need to do is that the user id should be taken automatically from the token
 
 #class for response: this is the response model based on how the response will be generated for the user
 class Post(PostBase):
     id:int
     created_at:datetime
+    owner_id:int
 
 class UserCreate(BaseModel):
     email : EmailStr
@@ -33,4 +34,4 @@ class Token(BaseModel):
     token_type:str
 
 class TokenData(BaseModel):
-    id : Optional[str] = None
+    id : Optional[int] = None
