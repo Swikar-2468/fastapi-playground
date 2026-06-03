@@ -8,13 +8,13 @@ SQL_ALCHEMY_DATABASE_URL = f'postgresql://{settings.database_username}:{settings
 
 engine = create_engine(SQL_ALCHEMY_DATABASE_URL)
 
-Sessionlocal = sessionmaker(autocommit=False, autoflush=False, bind = engine)
+Sessionlocal = sessionmaker(autocommit=False, autoflush=False, bind = engine) #creates a session factory
 
 Base = declarative_base()
 
 def get_db(): #get a session to the database for every request
-    db = Sessionlocal()
+    db = Sessionlocal() #creates a session
     try:
         yield db
-    finally:
+    finally: #finally is basically saying "at the end of it all, run this". here db.close() basically closes the database connection so that resources(memory) is freed, 
         db.close()
