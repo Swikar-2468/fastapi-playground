@@ -7,7 +7,7 @@ from .. import models, schemas, utils
 from app.database import engine, get_db, Base
 
 #stating the default hashing algorihtms
-models.Base.metadata.create_all(bind = engine)
+# models.Base.metadata.create_all(bind = engine)
 
 router = APIRouter(
     prefix = '/users',
